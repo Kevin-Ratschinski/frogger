@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dgvlego1w87y"]
+
+[node name="Player" type="CharacterBody2D"]
