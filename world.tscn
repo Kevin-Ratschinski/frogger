@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dgvlego1w87y" path="res://player.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://e3awguknhr0k" path="res://car.tscn" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://w0718rjk2svu" path="res://vehicle_row.tscn" id="6_dwbse"]
-[ext_resource type="Script" uid="uid://iuxn1gd413ko" path="res://canvas_layer.gd" id="6_pkg7o"]
+[ext_resource type="Script" uid="uid://iuxn1gd413ko" path="res://scripts/canvas_layer.gd" id="6_pkg7o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
 texture = ExtResource("1_wse8f")
