@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw016vn0j207e"]
+
+[sub_resource type="Gradient" id="Gradient_dlw5w"]
+offsets = PackedFloat32Array(0, 0.645455, 1)
+colors = PackedColorArray(1, 0, 0.266667, 1, 0.619608, 0.156863, 0.207843, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_drk02"]
+gradient = SubResource("Gradient_dlw5w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dlw5w"]
+lifetime_randomness = 0.4
+particle_flag_disable_z = true
+angle_min = -90.0
+angle_max = 90.0
+spread = 180.0
+initial_velocity_min = 15.0
+initial_velocity_max = 35.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 3.5
+color_ramp = SubResource("GradientTexture1D_drk02")
+
+[node name="DeathParticles" type="GPUParticles2D"]
+amount = 100
+lifetime = 0.8
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_dlw5w")
