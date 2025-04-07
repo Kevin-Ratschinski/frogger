@@ -3,8 +3,9 @@ extends Node2D
 @export var vehicle_scene: PackedScene
 @export var max_vehicles: int = 6
 @export var speed: int = 150
-@export var direction: int = 1
-@export var spawn_intervall: float = 2.0
+@export_enum("Left: -1", "Right: 1") var direction: int = 1
+@export_range(0.5, 3.0) var min_spawn_interval: float = 1.0
+@export_range(0.5, 5.0) var max_spawn_interval: float = 3.0
 
 var lane_width: float = 32.0
 
@@ -12,11 +13,13 @@ var lane_width: float = 32.0
 @onready var spawn_timer: Timer = $SpawnTimer
 
 func _ready() -> void:
-	spawn_timer.wait_time = spawn_intervall
+	spawn_car()
+	spawn_timer.wait_time = randf_range(min_spawn_interval, max_spawn_interval)
 	spawn_timer.start()
 
 func _on_spawn_timer_timeout() -> void:
 	spawn_car()
+	spawn_timer.wait_time = randf_range(min_spawn_interval, max_spawn_interval)
 
 func spawn_car() -> void:
 	assert(vehicle_scene, "No vehicle scene added")
@@ -30,7 +33,8 @@ func spawn_car() -> void:
 	var screen_width = get_viewport_rect().size.x
 	var start_x = -20 if direction == 1 else screen_width + 20
 	
-	vehicle.position = Vector2(start_x, lane_width / 2)
+	var y_offset = randf_range(-2, 2)
+	vehicle.position = Vector2(start_x, lane_width / 2 + y_offset)
 	vehicle.speed = speed
 	vehicle.direction = direction
 	if direction == -1:

@@ -39,7 +39,8 @@ position = Vector2(0, 288)
 vehicle_scene = ExtResource("5_dwbse")
 max_vehicles = 8
 speed = 150
-spawn_intervall = 0.8
+min_spawn_interval = 0.5
+max_spawn_interval = 1.959
 
 [node name="VehicleRowTwo" parent="." instance=ExtResource("6_dwbse")]
 position = Vector2(0, 256)
@@ -53,9 +54,8 @@ position = Vector2(0, 224)
 vehicle_scene = ExtResource("5_dwbse")
 max_vehicles = 9
 speed = 250
-direction = -1
-spawn_intervall = 0.5
 
 [node name="VehicleRowFour" parent="." instance=ExtResource("6_dwbse")]
 position = Vector2(0, 192)
 vehicle_scene = ExtResource("4_036b0")
+direction = -1
