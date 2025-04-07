@@ -8,8 +8,8 @@ enum TruckType {
 }
 
 var truck_sprites = [
-	preload("res://assets/truck.png"),
-	preload("res://assets/truck_trailer.png"),
+	preload("res://assets/sprites/truck.png"),
+	preload("res://assets/sprites/truck_trailer.png"),
 ]
 
 func _ready() -> void:

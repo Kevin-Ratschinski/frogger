@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do1xcs17a6rp6"
-path="res://.godot/imported/car_blue.png-485d5db37ab924f33d2bcccf464ec636.ctex"
+uid="uid://cbrejlug3pd5l"
+path="res://.godot/imported/Lilypad.png-cf239a3f9f3de18dfffa7b7625275ac8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/car_blue.png"
-dest_files=["res://.godot/imported/car_blue.png-485d5db37ab924f33d2bcccf464ec636.ctex"]
+source_file="res://assets/sprites/Lilypad.png"
+dest_files=["res://.godot/imported/Lilypad.png-cf239a3f9f3de18dfffa7b7625275ac8.ctex"]
 
 [params]
 

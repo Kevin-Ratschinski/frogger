@@ -9,9 +9,9 @@ enum CarType {
 }
 
 var car_sprites = [
-	preload("res://assets/car_red.png"),
-	preload("res://assets/car_green.png"),
-	preload("res://assets/car_blue.png"),
+	preload("res://assets/sprites/car_red.png"),
+	preload("res://assets/sprites/car_green.png"),
+	preload("res://assets/sprites/car_blue.png"),
 ]
 
 func _ready() -> void:

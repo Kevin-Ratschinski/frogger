@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4l8bc2rtcia0"
-path="res://.godot/imported/Turtle.png-365f2c00a6509f18639ad87bfd0ec585.ctex"
+uid="uid://dnb46eu71gie7"
+path="res://.godot/imported/car_red.png-ad25871ea92a61506c4322833ae37d25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Turtle.png"
-dest_files=["res://.godot/imported/Turtle.png-365f2c00a6509f18639ad87bfd0ec585.ctex"]
+source_file="res://assets/sprites/car_red.png"
+dest_files=["res://.godot/imported/car_red.png-ad25871ea92a61506c4322833ae37d25.ctex"]
 
 [params]
 
