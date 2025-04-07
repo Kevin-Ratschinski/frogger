@@ -1,4 +1,4 @@
-extends Vehicle
+class_name Car extends Vehicle
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
@@ -19,7 +19,7 @@ func _ready() -> void:
 	randomize_car_texture()
 	
 func _process(delta: float) -> void:
-	drive(delta)
+	super.drive(delta)
 
 
 func randomize_car_texture() -> void:
