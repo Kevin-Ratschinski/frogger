@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://w0718rjk2svu"]
 
-[ext_resource type="Script" uid="uid://dk3668c3m0p2v" path="res://scripts/vehicle_row.gd" id="1_orl8w"]
+[ext_resource type="Script" uid="uid://dk3668c3m0p2v" path="res://scripts/obstacles/vehicle_row.gd" id="1_orl8w"]
 
 [sub_resource type="Curve2D" id="Curve2D_2fxdl"]
 

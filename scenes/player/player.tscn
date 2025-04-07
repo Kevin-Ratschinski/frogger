@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgvlego1w87y"]
 
-[ext_resource type="Script" uid="uid://c7cau61klgkmh" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://c7cau61klgkmh" path="res://scripts/player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://7sigon884lvg" path="res://assets/sprites/frog.png" id="2_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]

@@ -26,7 +26,7 @@ func vehicle_collision(body: Node2D) -> void:
 		reset_player(body)
 
 func play_death_particles(player_pos: Vector2) -> void:
-	var death_particles = preload("res://death_particles.tscn").instantiate()
+	var death_particles = preload("res://scenes/effects/death_particles.tscn").instantiate()
 	death_particles.global_position = player_pos
 	get_tree().current_scene.add_child(death_particles)
 	death_particles.one_shot = true
