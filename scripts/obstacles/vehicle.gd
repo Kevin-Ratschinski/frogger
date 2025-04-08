@@ -37,11 +37,4 @@ func play_death_particles(player_pos: Vector2) -> void:
 	death_particles.queue_free()
 
 func reset_player(player: Player) -> void:
-	player.set_process(false)
-	await get_tree().create_timer(0.2).timeout
-	Global.lives -= 1
-	if Global.lives > 0:
-		player.reset_player()
-		player.set_process(true)
-	else:
-		player.queue_free()
+	player.reset()
