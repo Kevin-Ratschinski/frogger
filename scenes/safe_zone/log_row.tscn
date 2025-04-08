@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4fcfm5mm8kqa"]
+
+[ext_resource type="Script" uid="uid://b5qovl7d5f6x4" path="res://scripts/safe_zone/log_row.gd" id="1_k7gqp"]
+
+[node name="LogRow" type="Node2D"]
+script = ExtResource("1_k7gqp")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="Logs" type="Node2D" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
