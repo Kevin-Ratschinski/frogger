@@ -99,7 +99,9 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 50
 script = ExtResource("1_onrkg")
+GRACE_PERIOD_TIME = 2000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_i3pqv")
