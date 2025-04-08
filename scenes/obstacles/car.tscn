@@ -7,6 +7,7 @@
 size = Vector2(16, 16)
 
 [node name="Car" type="Node2D"]
+z_index = 100
 script = ExtResource("1_uoj53")
 metadata/_custom_type_script = "uid://dgfwh2cowm1fn"
 
