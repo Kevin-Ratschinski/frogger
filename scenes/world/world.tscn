@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://5nqaerlr6t3o"]
+[gd_scene load_steps=18 format=4 uid="uid://5nqaerlr6t3o"]
 
 [ext_resource type="Script" uid="uid://v3j7rm6p7vat" path="res://scripts/world/world.gd" id="1_bq33v"]
 [ext_resource type="Texture2D" uid="uid://h2mirr3npmo3" path="res://assets/sprites/tileset.png" id="2_j2gmx"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://w0718rjk2svu" path="res://scenes/obstacles/vehicle_row.tscn" id="4_gb53w"]
 [ext_resource type="PackedScene" uid="uid://e3awguknhr0k" path="res://scenes/obstacles/car.tscn" id="5_5qq27"]
 [ext_resource type="PackedScene" uid="uid://cof4hf7e3wns1" path="res://scenes/obstacles/truck.tscn" id="6_dlabj"]
+[ext_resource type="Script" uid="uid://c03dxy1u0xnsl" path="res://scripts/world/swim_zone.gd" id="7_j2gmx"]
 [ext_resource type="Script" uid="uid://iuxn1gd413ko" path="res://scripts/ui/canvas_layer.gd" id="7_srmg5"]
+[ext_resource type="PackedScene" uid="uid://b4fcfm5mm8kqa" path="res://scenes/safe_zone/log_row.tscn" id="8_gb53w"]
+[ext_resource type="PackedScene" uid="uid://c0ohwvihnqajb" path="res://scenes/safe_zone/log.tscn" id="9_1yooq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
 texture = ExtResource("2_j2gmx")
@@ -21,6 +24,15 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_tlwt5"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_fj7yv")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yooq"]
+size = Vector2(640, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb53w"]
+size = Vector2(8, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qq27"]
+size = Vector2(8, 128)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dwbse"]
 font_size = 14
@@ -40,7 +52,9 @@ tile_map_data = PackedByteArray("AAAAAAsAAAAAAAAAAAABAAsAAAAAAAAAAAACAAsAAAAAAAA
 tile_set = SubResource("TileSet_tlwt5")
 
 [node name="Player" parent="." instance=ExtResource("3_1yooq")]
+unique_name_in_owner = true
 position = Vector2(304, 338)
+GRACE_PERIOD_TIME = 50
 
 [node name="VehicleRowOne" parent="." instance=ExtResource("4_gb53w")]
 position = Vector2(0, 288)
@@ -67,6 +81,37 @@ speed = 250
 position = Vector2(0, 192)
 vehicle_scene = ExtResource("6_dlabj")
 direction = -1
+
+[node name="SwimZone" type="Area2D" parent="."]
+visible = false
+script = ExtResource("7_j2gmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwimZone"]
+position = Vector2(320, 80)
+shape = SubResource("RectangleShape2D_1yooq")
+
+[node name="LogRowOne" parent="." instance=ExtResource("8_gb53w")]
+position = Vector2(0, 128)
+log_scene = ExtResource("9_1yooq")
+
+[node name="LogRowTwo" parent="." instance=ExtResource("8_gb53w")]
+position = Vector2(0, 32)
+log_scene = ExtResource("9_1yooq")
+direction = -1
+
+[node name="DeathZoneLeft" type="Area2D" parent="."]
+position = Vector2(-8, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZoneLeft"]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_gb53w")
+
+[node name="DeathZoneRight" type="Area2D" parent="."]
+position = Vector2(648, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZoneRight"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_5qq27")
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("7_srmg5")
@@ -95,3 +140,7 @@ text = "Score: 0000"
 label_settings = SubResource("LabelSettings_pkg7o")
 
 [connection signal="new_max_row_reached" from="Player" to="." method="_on_player_new_max_row_reached"]
+[connection signal="body_entered" from="SwimZone" to="SwimZone" method="_on_body_entered"]
+[connection signal="body_exited" from="SwimZone" to="SwimZone" method="_on_body_exited"]
+[connection signal="body_entered" from="DeathZoneLeft" to="." method="_on_death_zone_left_body_entered"]
+[connection signal="body_entered" from="DeathZoneRight" to="." method="_on_death_zone_right_body_entered"]
