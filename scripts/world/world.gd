@@ -1,6 +1,30 @@
 extends Node2D
 
 @onready var ui: UI = $UI
+@onready var lilypad_1: Lilypad = $Lilypad1
+@onready var lilypad_2: Lilypad = $Lilypad2
+@onready var lilypad_3: Lilypad = $Lilypad3
+@onready var lilypad_4: Lilypad = $Lilypad4
+@onready var lilypad_5: Lilypad = $Lilypad5
+
+func _ready() -> void:
+	set_random_lilypad_positions()
+
+func set_random_lilypad_positions() -> void:
+	var lilypad_positions = get_lilypad_positions(20, Vector2(16, 16), 32)
+	
+	for lilypad: Lilypad in [lilypad_1, lilypad_2, lilypad_3, lilypad_4, lilypad_5]:
+		var random_index := randi() % lilypad_positions.size()
+		var random_rotation := randf_range(0, 360)
+		lilypad.position = lilypad_positions[random_index]
+		lilypad.lilypad_sprite.rotation_degrees = random_rotation
+		lilypad_positions.remove_at(random_index)
+
+func get_lilypad_positions(count: int, start: Vector2, step: int) -> Array[Vector2]:
+	var positions: Array[Vector2] = []
+	for i in count:
+		positions.append(start + Vector2(step * i, 0))
+	return positions
 
 func _on_player_new_max_row_reached() -> void:
 	Global.score += 10
