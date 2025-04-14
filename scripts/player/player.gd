@@ -66,10 +66,13 @@ func move_right() -> void:
 	move_and_collide(Vector2(step_size, 0))
 	animation_player.play("jump_right")
 
-func reset():
+func reset(decrease_life: bool = true):
 	set_process(false)
 	await get_tree().create_timer(0.2).timeout
-	Global.lives -= 1
+	
+	if decrease_life:
+		Global.lives -= 1
+	
 	if Global.lives > 0:
 		global_position = start_position
 		current_row = 0
