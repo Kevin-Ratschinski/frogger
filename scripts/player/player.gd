@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 signal new_max_row_reached
+signal game_over
 
 enum SafetyState { UNSAFE, SAFE, GRACE_PERIOD }
 var safety_state := SafetyState.UNSAFE
@@ -81,6 +82,7 @@ func reset(decrease_life: bool = true):
 		safety_state = SafetyState.UNSAFE
 		set_process(true)
 	else:
+		game_over.emit()
 		queue_free()
 
 func update_safety_status(new_status: bool):

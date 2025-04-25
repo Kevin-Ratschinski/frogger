@@ -6,9 +6,12 @@ extends Node2D
 @onready var lilypad_3: Lilypad = $Lilypad3
 @onready var lilypad_4: Lilypad = $Lilypad4
 @onready var lilypad_5: Lilypad = $Lilypad5
+@onready var game_over_container: CenterContainer = $UI/GameOverContainer
+@onready var scored_points_label: Label = $UI/GameOverContainer/VBoxContainer/ScoredPointsLabel
 
 func _ready() -> void:
 	set_random_lilypad_positions()
+	game_over_container.visible = false
 
 func set_random_lilypad_positions() -> void:
 	var lilypad_positions = get_lilypad_positions(20, Vector2(16, 16), 32)
@@ -40,3 +43,9 @@ func _on_death_zone_right_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var player := body
 		player.reset()
+
+
+func _on_player_game_over() -> void:
+	var scored_points_text:= "You have scored: %s points" % Global.score
+	scored_points_label.text = scored_points_text
+	game_over_container.visible = true

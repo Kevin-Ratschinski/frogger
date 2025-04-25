@@ -2,6 +2,7 @@ class_name UI extends CanvasLayer
 
 @onready var life_label: Label = $MarginContainer/HBoxContainer/LifeLabel
 @onready var score_label: Label = $MarginContainer/HBoxContainer/ScoreLabel
+@onready var restart_button: Button = $GameOverContainer/VBoxContainer/MarginContainer/RestartButton
 
 func _ready() -> void:
 	update_ui()
@@ -17,3 +18,9 @@ func _on_score_changed(new_score) -> void:
 
 func _on_lives_changed(new_lives) -> void:
 	life_label.text = "Lives: %d" % new_lives
+
+func _on_restart_button_pressed() -> void:
+	# Restart Game
+	Global.score = 0
+	Global.lives = 5
+	get_tree().reload_current_scene()
