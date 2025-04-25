@@ -14,7 +14,7 @@ func _ready() -> void:
 	game_over_container.visible = false
 
 func set_random_lilypad_positions() -> void:
-	var lilypad_positions = get_lilypad_positions(10, Vector2(16, 16), 64)
+	var lilypad_positions = get_lilypad_positions(10, Vector2(16, 20), 64)
 	
 	if lilypad_positions.size() < lilypads.size():
 		push_error("Not enough positions for all Lilypads!")

@@ -7,8 +7,17 @@ class_name Lilypad extends Node2D
 enum LilypadState { EMPTY, FULL }
 var lilypad_state: LilypadState = LilypadState.EMPTY
 
+# float variables for sine wave movement
+var float_amplitude: float = 1.5
+var float_speed: float = 1.1
+var float_phase: float = 0.0
+
 func _ready() -> void:
+	float_phase = randf() * TAU
 	goal_frog_sprite.visible = false
+
+func _process(delta: float) -> void:
+	position.y += sin(Time.get_ticks_msec() / 1000.0 * float_speed + float_phase) * float_amplitude * delta
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
