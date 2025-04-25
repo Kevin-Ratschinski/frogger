@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=4 uid="uid://5nqaerlr6t3o"]
+[gd_scene load_steps=29 format=4 uid="uid://5nqaerlr6t3o"]
 
 [ext_resource type="Script" uid="uid://v3j7rm6p7vat" path="res://scripts/world/world.gd" id="1_bq33v"]
+[ext_resource type="Shader" uid="uid://uf6ojl08sxxh" path="res://scenes/world/water.gdshader" id="2_71ii3"]
 [ext_resource type="Texture2D" uid="uid://h2mirr3npmo3" path="res://assets/sprites/tileset.png" id="2_j2gmx"]
 [ext_resource type="PackedScene" uid="uid://dgvlego1w87y" path="res://scenes/player/player.tscn" id="3_1yooq"]
 [ext_resource type="PackedScene" uid="uid://w0718rjk2svu" path="res://scenes/obstacles/vehicle_row.tscn" id="4_gb53w"]
@@ -17,6 +18,20 @@
 [ext_resource type="FontFile" uid="uid://cn6ldiv6ugoog" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="14_mxkvs"]
 [ext_resource type="Theme" uid="uid://q002trsdr10g" path="res://assets/frogger_theme.tres" id="16_m114p"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt7bg"]
+shader = ExtResource("2_71ii3")
+shader_parameter/wave_strength = 3.0
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_frequency = 10.0
+shader_parameter/blue_threshold = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71ii3"]
+shader = ExtResource("2_71ii3")
+shader_parameter/wave_strength = 3.0
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_frequency = 10.0
+shader_parameter/blue_threshold = 0.5
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fj7yv"]
 texture = ExtResource("2_j2gmx")
 texture_region_size = Vector2i(32, 32)
@@ -25,7 +40,9 @@ texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 3:0/0 = 0
 4:0/0 = 0
+4:0/0/material = SubResource("ShaderMaterial_bt7bg")
 5:0/0 = 0
+5:0/0/material = SubResource("ShaderMaterial_71ii3")
 
 [sub_resource type="TileSet" id="TileSet_tlwt5"]
 tile_size = Vector2i(32, 32)
