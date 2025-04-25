@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqo2aktaxwxe3"]
+
+[sub_resource type="Gradient" id="Gradient_wj33e"]
+offsets = PackedFloat32Array(0, 0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.172549, 0.909804, 0.960784, 1, 0, 0.584314, 0.913725, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_njkas"]
+gradient = SubResource("Gradient_wj33e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1qdud"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 35.0
+initial_velocity_max = 55.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 5.0
+linear_accel_max = 5.0
+scale_min = 1.5
+scale_max = 3.5
+color_ramp = SubResource("GradientTexture1D_njkas")
+
+[node name="SplashParticles" type="GPUParticles2D"]
+amount = 100
+lifetime = 0.6
+explosiveness = 0.8
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_1qdud")
