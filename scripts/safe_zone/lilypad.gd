@@ -20,9 +20,10 @@ func _process(delta: float) -> void:
 	position.y += sin(Time.get_ticks_msec() / 1000.0 * float_speed + float_phase) * float_amplitude * delta
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is Player:
+	if body is Player and lilypad_state == LilypadState.EMPTY:
 		var player := body
 		handle_player_on_lilypad(player)
+		lilypad_state = LilypadState.FULL
 
 func handle_player_on_lilypad(player: Player) -> void:
 	goal_frog_sprite.visible = true
