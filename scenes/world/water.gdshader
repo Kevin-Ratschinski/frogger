@@ -10,7 +10,7 @@ void fragment() {
     vec2 uv = UV;
     vec4 tex_color = texture(TEXTURE, uv);
     bool is_blue = tex_color.b > blue_threshold && tex_color.b > tex_color.r && tex_color.b > tex_color.g;
-    
+
     if (is_blue) {
 		float wave1 = sin(uv.x * wave_frequency + TIME * wave_speed);
 		float wave2 = cos(uv.y * wave_frequency * 0.8 + TIME * wave_speed * 1.2);
