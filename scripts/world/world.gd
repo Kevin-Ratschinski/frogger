@@ -53,3 +53,7 @@ func _on_player_game_over() -> void:
 	var scored_points_text:= "You have scored: %s points" % Global.score
 	scored_points_label.text = scored_points_text
 	game_over_container.visible = true
+
+
+func _on_lilypads_reached() -> void:
+	pass # TODO

@@ -3,6 +3,9 @@ class_name Lilypad extends Node2D
 
 @onready var lilypad_sprite: Sprite2D = $LilypadSprite2D
 @onready var goal_frog_sprite: Sprite2D = $GoalFrogSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+signal lilypad_reached
 
 enum LilypadState { EMPTY, FULL }
 var lilypad_state: LilypadState = LilypadState.EMPTY
@@ -24,8 +27,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var player := body
 		handle_player_on_lilypad(player)
 		lilypad_state = LilypadState.FULL
+		lilypad_reached.emit()
 
 func handle_player_on_lilypad(player: Player) -> void:
+	player.visible = false
 	goal_frog_sprite.visible = true
+	animation_player.play("rotate_frog")
 	lilypad_state = LilypadState.FULL
 	player.reset(false)

@@ -80,6 +80,7 @@ func reset(decrease_life: bool = true):
 		max_row = 0
 		await get_tree().create_timer(0.2).timeout
 		safety_state = SafetyState.UNSAFE
+		visible = true
 		set_process(true)
 	else:
 		game_over.emit()

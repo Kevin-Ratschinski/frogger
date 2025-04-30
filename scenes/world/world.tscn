@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://5nqaerlr6t3o"]
+[gd_scene load_steps=30 format=4 uid="uid://5nqaerlr6t3o"]
 
 [ext_resource type="Script" uid="uid://v3j7rm6p7vat" path="res://scripts/world/world.gd" id="1_bq33v"]
 [ext_resource type="Shader" uid="uid://uf6ojl08sxxh" path="res://scenes/world/water.gdshader" id="2_71ii3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://v440qt3bqpux" path="res://scenes/safe_zone/turtle_row.tscn" id="10_dlabj"]
 [ext_resource type="PackedScene" uid="uid://c10s0dcvfeqm7" path="res://scenes/safe_zone/turtle.tscn" id="11_srmg5"]
 [ext_resource type="PackedScene" uid="uid://qaxj66khtlvw" path="res://scenes/safe_zone/lilypad.tscn" id="12_umvgx"]
+[ext_resource type="Script" uid="uid://dccyg0hsvkij2" path="res://scripts/safe_zone/lilypads.gd" id="13_bt7bg"]
 [ext_resource type="FontFile" uid="uid://dqie6754x0bw5" path="res://assets/fonts/PixelOperator8.ttf" id="13_srmg5"]
 [ext_resource type="FontFile" uid="uid://cn6ldiv6ugoog" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="14_mxkvs"]
 [ext_resource type="Theme" uid="uid://q002trsdr10g" path="res://assets/frogger_theme.tres" id="16_m114p"]
@@ -147,6 +148,7 @@ turtle_scene = ExtResource("11_srmg5")
 direction = -1
 
 [node name="Lilypads" type="Node2D" parent="."]
+script = ExtResource("13_bt7bg")
 
 [node name="Lilypad1" parent="Lilypads" instance=ExtResource("12_umvgx")]
 position = Vector2(16, 16)
@@ -250,6 +252,7 @@ label_settings = SubResource("LabelSettings_pkg7o")
 [connection signal="new_max_row_reached" from="Player" to="." method="_on_player_new_max_row_reached"]
 [connection signal="body_entered" from="SwimZone" to="SwimZone" method="_on_body_entered"]
 [connection signal="body_exited" from="SwimZone" to="SwimZone" method="_on_body_exited"]
+[connection signal="reached" from="Lilypads" to="." method="_on_lilypads_reached"]
 [connection signal="body_entered" from="DeathZoneLeft" to="." method="_on_death_zone_left_body_entered"]
 [connection signal="body_entered" from="DeathZoneRight" to="." method="_on_death_zone_right_body_entered"]
 [connection signal="pressed" from="UI/GameOverContainer/VBoxContainer/MarginContainer/RestartButton" to="UI" method="_on_restart_button_pressed"]
