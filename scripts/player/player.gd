@@ -10,6 +10,7 @@ signal game_over
 enum SafetyState { UNSAFE, SAFE, GRACE_PERIOD }
 var safety_state := SafetyState.UNSAFE
 
+var is_active: bool = true
 var start_position: Vector2 = Vector2(304, 338)
 var step_size: int = 32
 var current_row: int = 0
@@ -19,6 +20,8 @@ var max_row: int = 0
 var _safe_until_time := 0
 
 func _process(_delta: float) -> void:
+	if !is_active: return
+	
 	if safety_state == SafetyState.GRACE_PERIOD:
 		if Time.get_ticks_msec() > _safe_until_time:
 			print("Set Player State: UNSAFE")
@@ -73,6 +76,10 @@ func reset(decrease_life: bool = true):
 	
 	if decrease_life:
 		Global.lives -= 1
+		if Global.score >= 30:
+			Global.score -= 30
+		else:
+			Global.score = 0
 	
 	if Global.lives > 0:
 		global_position = start_position
@@ -80,6 +87,8 @@ func reset(decrease_life: bool = true):
 		max_row = 0
 		await get_tree().create_timer(0.2).timeout
 		safety_state = SafetyState.UNSAFE
+		
+		if !is_active: return
 		visible = true
 		set_process(true)
 	else:

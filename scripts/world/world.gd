@@ -4,9 +4,12 @@ extends Node2D
 
 @onready var ui: UI = $UI
 @onready var game_over_container: CenterContainer = $UI/GameOverContainer
+@onready var game_over_label: Label = $UI/GameOverContainer/VBoxContainer/GameOverLabel
 @onready var scored_points_label: Label = $UI/GameOverContainer/VBoxContainer/ScoredPointsLabel
+@onready var player: Player = %Player
 
 var rng := RandomNumberGenerator.new()
+var lilypad_reached: int = 0
 
 func _ready() -> void:
 	rng.randomize()
@@ -39,14 +42,12 @@ func _on_player_new_max_row_reached() -> void:
 
 func _on_death_zone_left_body_entered(body: Node2D) -> void:
 	if body is Player:
-		var player := body
-		player.reset()
+		(body as Player).reset()
 
 
 func _on_death_zone_right_body_entered(body: Node2D) -> void:
 	if body is Player:
-		var player := body
-		player.reset()
+		(body as Player).reset()
 
 
 func _on_player_game_over() -> void:
@@ -56,4 +57,11 @@ func _on_player_game_over() -> void:
 
 
 func _on_lilypads_reached() -> void:
-	pass # TODO
+	lilypad_reached += 1
+	Global.score += 90
+	if lilypad_reached == lilypads.size():
+		game_over_label.text = "You won!"
+		var scored_points_text:= "You have scored: %s points" % Global.score
+		scored_points_label.text = scored_points_text
+		game_over_container.visible = true
+		player.is_active = false

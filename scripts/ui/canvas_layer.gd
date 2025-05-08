@@ -1,5 +1,6 @@
 class_name UI extends CanvasLayer
 
+@onready var game_over_label: Label = $GameOverContainer/VBoxContainer/GameOverLabel
 @onready var life_label: Label = $MarginContainer/HBoxContainer/LifeLabel
 @onready var score_label: Label = $MarginContainer/HBoxContainer/ScoreLabel
 @onready var restart_button: Button = $GameOverContainer/VBoxContainer/MarginContainer/RestartButton
