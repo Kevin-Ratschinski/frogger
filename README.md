@@ -2,10 +2,6 @@
 
 Frogger is a classic arcade-style game recreated using the Godot Engine. The goal of the game is to guide the frog safely across a busy road and a treacherous river to reach the other side.
 
-## 🚧 Work in Progress
-
-This project is currently under development and may not be fully functional. Please check back later for updates.
-
 ## ✨ Features
 
 - **Classic Gameplay**: Navigate the frog through traffic and across floating objects to reach the goal.
