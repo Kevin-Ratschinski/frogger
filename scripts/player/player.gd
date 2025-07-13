@@ -3,6 +3,10 @@ class_name Player extends CharacterBody2D
 @export var GRACE_PERIOD_TIME: int = 50
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var jump_sound: AudioStreamPlayer = $JumpSound
+@onready var collision_sound: AudioStreamPlayer = $CollisionSound
+@onready var splash_sound: AudioStreamPlayer = $SplashSound
+@onready var finish_sound: AudioStreamPlayer = $FinishSound
 
 signal new_max_row_reached
 signal game_over
@@ -46,6 +50,7 @@ func move_up() -> void:
 		return
 	move_and_collide(Vector2(0, -step_size))
 	animation_player.play("jump_up")
+	jump_sound.play()
 	current_row += 1
 
 func move_down() -> void:
@@ -54,6 +59,7 @@ func move_down() -> void:
 		return
 	move_and_collide(Vector2(0, step_size))
 	animation_player.play("jump_down")
+	jump_sound.play()
 	current_row -= 1
 
 func move_left() -> void:
@@ -62,6 +68,7 @@ func move_left() -> void:
 		return
 	move_and_collide(Vector2(-step_size, 0))
 	animation_player.play("jump_left")
+	jump_sound.play()
 
 func move_right() -> void:
 	var next_step := global_position.x + step_size
@@ -69,6 +76,7 @@ func move_right() -> void:
 		return
 	move_and_collide(Vector2(step_size, 0))
 	animation_player.play("jump_right")
+	jump_sound.play()
 
 func reset(decrease_life: bool = true):
 	set_process(false)

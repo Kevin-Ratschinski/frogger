@@ -115,3 +115,11 @@ shape = SubResource("RectangleShape2D_onrkg")
 libraries = {
 &"": SubResource("AnimationLibrary_hqtel")
 }
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+
+[node name="CollisionSound" type="AudioStreamPlayer" parent="."]
+
+[node name="SplashSound" type="AudioStreamPlayer" parent="."]
+
+[node name="FinishSound" type="AudioStreamPlayer" parent="."]
